@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 import users from "constans/api/users";
 
@@ -10,14 +10,14 @@ import Select from "components/Form/Select";
 import Input from "components/Form/Input";
 
 function LoginForm({ history }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const [{ name, email, password, profesion, otherProfesion }, setState] =
+  const [{ name, email, password, profession, otherProfesion }, setState] =
     useForm({
       name: "",
       email: "",
       password: "",
-      profesion: "",
+      profession: "",
       otherProfesion: "",
     });
 
@@ -30,7 +30,7 @@ function LoginForm({ history }) {
         name,
         email,
         password,
-        profesion: profesion === "others" ? otherProfesion : profesion,
+        profession: profession === "others" ? otherProfesion : profession,
       })
       .then((res) => {
         history.push("/login");
@@ -78,9 +78,9 @@ function LoginForm({ history }) {
           />
 
           <Select
-            name="profesion"
+            name="profession"
             labelName="Occupation"
-            value={profesion}
+            value={profession}
             fallbackText="Select your focus"
             onClick={setState}
           >
@@ -91,7 +91,7 @@ function LoginForm({ history }) {
             <option value="others">Others</option>
           </Select>
 
-          {profesion === "others" && (
+          {profession === "others" && (
             <Input
               value={otherProfesion}
               placeholder="Your Occupation"

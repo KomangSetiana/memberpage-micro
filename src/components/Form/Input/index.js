@@ -22,7 +22,7 @@ export default function Input({
             error ? "text-red-500" : "text-gray-900",
           ].join(" ")}
         >
-          Full Name
+          {labelName}
         </label>
       )}
       <input

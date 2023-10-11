@@ -1,7 +1,7 @@
 import { createBrowserHistory } from "history";
 import React, { useEffect } from "react";
 import "assets/css/style.css";
-import { Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import MemberRoute from "./components/Routes/MemberRoute";
@@ -17,6 +17,8 @@ import { setAuthorizationHandler } from "configs/axios";
 import users from "constans/api/users";
 import Joined from "pages/Join";
 import DetailsClass from "pages/DetailsClass";
+import Settings from "pages/Settings";
+import Transactions from "pages/Transactions";
 
 function App() {
   const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
@@ -38,7 +40,7 @@ function App() {
 
   return (
     <>
-      <Router history={history}>
+      <BrowserRouter history={history}>
         <Switch>
           <GuestRoute path="/login" component={Login}></GuestRoute>
           <GuestRoute path="/register" component={Register}></GuestRoute>
@@ -63,9 +65,15 @@ function App() {
             component={DetailsClass}
           ></MemberRoute>
 
+          <MemberRoute path="/settings" component={Settings}></MemberRoute>
+          <MemberRoute
+            path="/transactions"
+            component={Transactions}
+          ></MemberRoute>
+
           <Route path="*" component={NotFound}></Route>
         </Switch>
-      </Router>
+      </BrowserRouter>
     </>
   );
 }
