@@ -13,8 +13,7 @@ const details = () => axios.get("/users");
 const update = (data) => axios.put(`/users/${data.id}`, data);
 
 const logout = () => axios.post("users/logout");
-
-export default {
+const users = {
   login,
   register,
   refresh,
@@ -22,3 +21,5 @@ export default {
   update,
   logout,
 };
+
+export default users;
