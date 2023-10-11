@@ -1,5 +1,5 @@
-export default (errors) => {
-  const fieldErrors =
+const fieldError = (errors) => {
+  const itemErrors =
     typeof errors === "object" &&
     errors?.reduce((listErrors, error) => {
       if (error?.field) listErrors[error.field] = error;
@@ -7,5 +7,7 @@ export default (errors) => {
       return listErrors;
     }, {});
 
-  return fieldErrors;
+  return itemErrors;
 };
+
+export default fieldError;

@@ -1,4 +1,4 @@
-export default (file) => {
+const base64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -6,3 +6,5 @@ export default (file) => {
     reader.onerror = (error) => reject(error);
   });
 };
+
+export default base64;

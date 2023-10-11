@@ -1,5 +1,5 @@
 import axios from "configs/axios";
 
-export default {
-  upload: (image) => axios.post(`/media`, { image }),
-};
+const upload = (image) => axios.post(`/media`, { image });
+
+export default upload;
