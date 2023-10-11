@@ -105,7 +105,7 @@ function LoginForm({ history }) {
             style={{ width: 324, height: 374 }}
           ></div>
           <div className="absolute w-full h-full -mb-6 -ml-3">
-            <img src="/assets/images/loginImages.jpg" alt="Login Image" />
+            <img src="assets/images/loginImages.jpg" alt="Login" />
           </div>
           <div
             className="absolute z-10 bg-white bottom-0 right-0 py-3 px-4 -mr-12"
