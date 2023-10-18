@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 
 import courses from "constans/api/courses";
 
@@ -12,35 +13,33 @@ export default function Joined({ history, match }) {
     data: {},
   }));
 
-  useEffect(() => {
-    courses
-      .details(match.params.class)
-      .then((res) => {
-        setstate({ isLoading: false, isError: false, data: res.data });
-      })
-      .catch((err) => {
-        setstate({ isLoading: false, isError: true, data: null });
-      });
+  const joining = useCallback(async () => {
+    try {
+      const details = await courses.details(match.params.class);
+
+      const joined = await courses.join(match.params.class);
+      if (joined.data.snap_url) {
+        window.location.href = joined.data.snap_url;
+      } else {
+        setstate({ isLoading: false, isError: false, data: details });
+      }
+    } catch (error) {
+      if (error?.response?.data?.message === "user already take this course")
+        history.push(`/courses/${match.params.class}`);
+      console.log("error", error);
+    }
   }, [match.params.class]);
 
+  useEffect(() => {
+    joining();
+  }, [joining]);
+
   if (state.isLoading) {
-    return <Loading> /</Loading>;
+    return <Loading> </Loading>;
   }
 
   if (state.isError) {
     return <ServerError></ServerError>;
-  }
-  function joining() {
-    courses
-      .join(match.params.class)
-      .then((res) => {
-        history.push(`/courses/${match.params.class}`);
-      })
-      .catch((err) => {
-        if (err?.response?.data?.message === "user already take this course") {
-          history.push(`/courses/${match.params.class}`);
-        }
-      });
   }
 
   return (
@@ -55,13 +54,12 @@ export default function Joined({ history, match }) {
         <strong> {state?.data?.name ?? "Class Name"} </strong>
         class
       </p>
-      <span
-        onClick={joining}
+      <Link
         className="cursor-pointer bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3 mt-4"
-        to={"/"}
+        to={`/courses/${match.params.class}`}
       >
         Start Learn
-      </span>
+      </Link>
     </section>
   );
 }

@@ -72,10 +72,10 @@ export default function DetailsClass({ match, history }) {
           <main className="flex-1">
             <div className="px-16">
               <section className="flex flex-col mt-8">
-                <h1 className="text-4xl text-gray-900 font-medium">
+                <h1 className="text-xl md:text-4xl text-gray-900 font-medium">
                   {currentLesson?.name ?? "Lesson Name"}
                 </h1>
-                <p className="text-lg text-gray-600">
+                <p className="text-sm md:text-lg text-gray-600">
                   Materi bagian dari {currentChapter?.name ?? "Chapter Name"}
                 </p>
               </section>

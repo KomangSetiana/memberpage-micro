@@ -9,8 +9,10 @@ export default function ServerError() {
         src={`${process.env.PUBLIC_URL}/assets/images/ilustration-404.jpg`}
         alt="Opps we lost you"
       />
-      <h1 className="text-3xl text-gray-900 mt-12">Opps! Server error</h1>
-      <p className="text-lg-text-geray-600 mt-4 lg:w-3/12 xl:w-2/12 mx-auto text-center">
+      <h1 className="text-xl sm:text-3xl text-gray-900 mt-12">
+        Opps! Server error
+      </h1>
+      <p className="text-sm sm:text-lg text-gray-600 mt-4 w-full lg:w-3/12 xl:w-2/12 mx-auto text-center px-4 sm:px-0">
         Mostly this cause by the server was busy,please try again later.
       </p>
       <Link

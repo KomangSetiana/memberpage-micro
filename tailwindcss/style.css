@@ -108,7 +108,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 515px;
-  height: 93%;
+  height: 90%;
   opacity: 0.8;
   clip-path: polygon(46% 0%, 82% 0%, 67% 100%, 0% 100%);
   background: transparent linear-gradient(130.09deg, #3d47bd 0%, #2e37a4 58.8%);
@@ -209,4 +209,60 @@ svg#svg-star {
 .star .star.placeholder {
   z-index: 1;
   @apply bg-gray-200;
+}
+
+/* responsesive */
+
+aside .overlay {
+  @apply bg-black opacity-25 inset-0 fixed;
+  content: "";
+  height: 100vh;
+  width: 100vw;
+}
+
+.toggle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 30px;
+  top: 45px;
+}
+
+.guest-page .toggle {
+  position: relative;
+  left: auto;
+  top: auto;
+}
+.toggle:focus {
+  outline: none;
+}
+.toggle::before,
+.toggle::after {
+  @apply right-0 absolute bg-gray-900 transition-all duration-200;
+  content: "";
+  height: 3px;
+  transform-origin: center;
+}
+.toggle::before {
+  top: 26%;
+  width: 20px;
+}
+.toggle::after {
+  top: 58%;
+  width: 12px;
+}
+.toggle.active::before,
+.toggle.active::after {
+  width: 20px;
+  top: 50%;
+  @apply bg-white;
+}
+
+.toggle.active::before {
+  transform: translateY(-50%);
+  rotate: -45deg;
+}
+.toggle.active::after {
+  transform: translateY(-50%);
+  rotate: 45deg;
 }

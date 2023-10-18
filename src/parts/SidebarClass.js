@@ -10,6 +10,7 @@ function SidebarClass({ match, data, defaultUri }) {
       ? "text-teal-500"
       : "text-indigo-500";
   };
+  const [ToggleMenu, setToggleMenu] = React.useState(false);
 
   const list = [];
   data.chapters.forEach((chapter, index) => {
@@ -41,28 +42,45 @@ function SidebarClass({ match, data, defaultUri }) {
     }
   });
 
+  const sideBarStyle = {
+    width: 280,
+    left: window.innerWidth < 640 && !ToggleMenu ? -280 : 0,
+  };
+
   return (
-    <aside
-      className="bg-indigo-900 max-h-screen h-screen overflow-y-auto"
-      style={{ width: 280 }}
-    >
-      <div
-        className="max-h-screen h-screen  fixed bg-indigo-900 flex flex-col content-between"
-        style={{ width: 280 }}
+    <>
+      <button
+        onClick={() => setToggleMenu((prev) => !prev)}
+        className={["toggle z-50", ToggleMenu ? "active" : ""].join(" ")}
+      ></button>
+      <aside
+        className="transition-all duration-300 bg-indigo-900 max-h-screen h-screen overflow-y-auto min-h-full fixed sm:relative z-50"
+        style={sideBarStyle}
       >
-        <ul className="main-menu mt-12">
-          <li>
-            <Link
-              className="relative flex items-center py-3 px-5 w-full text-left text-white mb-12"
-              to="/"
-            >
-              <ArrowBack className="mr-1"></ArrowBack> Back to Home
-            </Link>
-          </li>
-          {list}
-        </ul>
-      </div>
-    </aside>
+        {ToggleMenu && (
+          <div
+            className="overlay"
+            onClick={() => setToggleMenu((prev) => !prev)}
+          ></div>
+        )}
+        <div
+          className="max-h-screen h-screen  fixed bg-indigo-900 flex flex-col content-between"
+          style={{ width: 280 }}
+        >
+          <ul className="main-menu mt-12 overflow-y-auto">
+            <li>
+              <Link
+                className="relative flex items-center py-3 px-5 w-full text-left text-white mb-12"
+                to="/"
+              >
+                <ArrowBack className="mr-1"></ArrowBack> Back to Home
+              </Link>
+            </li>
+            {list}
+          </ul>
+        </div>
+      </aside>
+    </>
   );
 }
 

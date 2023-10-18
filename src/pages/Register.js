@@ -10,10 +10,10 @@ export default function Register({ history }) {
 
   return (
     <>
-      <section className="container mx-auto pt-10">
+      <section className="container mx-auto pt-10 px-4 guest-page">
         <Header onLight></Header>
       </section>
-      <section className="container mx-auto pt-10">
+      <section className="container mx-auto pt-10 px-4">
         <RegisterForm></RegisterForm>
       </section>
       <section className=" mt-24 py-12" style={{ backgroundColor: "#161A4F" }}>

@@ -43,7 +43,7 @@ function LoginForm({ history }) {
   const ERROR = fieldErrors(errors);
   return (
     <div className="flex justify-center items-center pb-24">
-      <div className="w-3/12">
+      <div className="w-full sm:w-3/12">
         <h1 className="text-4xl text-gray-900 mb-6">
           <span className="font-bold">Grow Skills</span> From, <br />
           Anyware <span className="font-bold">Gaols</span>
@@ -109,8 +109,8 @@ function LoginForm({ history }) {
           </button>
         </form>
       </div>
-      <div className="w-1/12"></div>
-      <div className="w-5/12 flex justify-end pt-24 pr-16">
+      <div className=" w-1/12 hidden sm:block"></div>
+      <div className="w-5/12 hidden flex justify-end pt-24 pr-16">
         <div className="relative" style={{ width: 369, height: 440 }}>
           <div
             className="absolute border-indigo-700 border-2 -mt-8 -ml-16 left-0"

@@ -13,8 +13,10 @@ export default function Unauthenticated({
         src={`${process.env.PUBLIC_URL}/assets/images/ilustrasion-security.jpg`}
         alt="you are not support here, please login"
       />
-      <h1 className="text-3xl text-gray-900 mt-12">Wow! How are you here?</h1>
-      <p className="text-lg-text-geray-600 mt-4 lg:w-3/12 xl:w-2/12 mx-auto text-center">
+      <h1 className="text-xl sm:text-3xl text-gray-900 mt-12">
+        Wow! How are you here?
+      </h1>
+      <p className="text-sm sm:text-lg-text-geray-600 mt-4 w-full lg:w-3/12 xl:w-2/12 mx-auto text-center px-4 sm:px-0">
         Seems like you do not have access for this page. we are sorry.
       </p>
       {external ? (
