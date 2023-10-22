@@ -27,7 +27,7 @@ export default function Joined({ history, match }) {
       if (error?.response?.data?.message === "user already take this course")
         history.push(`/courses/${match.params.class}`);
     }
-  }, [match.params.class]);
+  }, [match.params.class, history]);
 
   useEffect(() => {
     joining();
