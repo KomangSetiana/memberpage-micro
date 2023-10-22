@@ -25,7 +25,7 @@ function Header({ onLight, location }) {
       ].join(" ")}
     >
       <div style={{ height: 54 }} className="z-50">
-        <Logo className={onLight ? "on-light" : "on-dark"}></Logo>
+        <Logo className={classnameLogo}></Logo>
       </div>
       <div className="flex md:hidden">
         <button

@@ -26,7 +26,6 @@ export default function Joined({ history, match }) {
     } catch (error) {
       if (error?.response?.data?.message === "user already take this course")
         history.push(`/courses/${match.params.class}`);
-      console.log("error", error);
     }
   }, [match.params.class]);
 
